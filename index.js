@@ -27,7 +27,7 @@ app.post('/generate', async (req, res) => {
         n: 1,
         size: size,
         quality: 'standard',
-        response_format: 'b64_json'
+        response_format: 'url'
       })
     });
 
@@ -37,7 +37,7 @@ app.post('/generate', async (req, res) => {
       return res.status(400).json({ error: data.error.message });
     }
 
-    res.json({ image: data.data[0].b64_json });
+    res.json({ url: data.data[0].url });
 
   } catch (err) {
     res.status(500).json({ error: err.message });
